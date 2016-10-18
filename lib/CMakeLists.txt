@@ -54,7 +54,7 @@ list(APPEND test_eventstream_sources
 )
 
 add_library(eventstream SHARED ${eventstream_sources})
-target_link_libraries(eventstream ${eventstream_libs})
+target_link_libraries(eventstream ${eventstream_libs} ${HE2PI_LOGGER_LIBRARIES})
 
 add_executable(test_eventstream ${test_eventstream_sources} test_all.cc)
 target_link_libraries(test_eventstream eventstream ${CPPUNIT_LIBRARIES})
@@ -98,4 +98,3 @@ INCLUDE(GrTest)
 SET(GR_TEST_TARGET_DEPS eventstream)
 #turn each test cpp file into an executable with an int main() function
 ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK -DBOOST_TEST_MAIN)
-

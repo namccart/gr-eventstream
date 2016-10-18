@@ -42,7 +42,7 @@ find_package(CppUnit)
 if(NOT CPPUNIT_FOUND)
     message(FATAL_ERROR "CPPUNIT NOT FOUND!")
 endif(NOT CPPUNIT_FOUND)
-
+find_package(he2piLogger)
 #find_package(Log4Cpp)
 #if(NOT LOG4CPP_FOUND)
 #    message(FATAL_ERROR "LOG4CPP NOT FOUND!")
@@ -98,7 +98,11 @@ FIND_PACKAGE(Boost "1.53" COMPONENTS ${BOOST_REQUIRED_COMPONENTS})
 
 IF(NOT Boost_FOUND)
     MESSAGE(FATAL_ERROR "Boost required")
-ENDIF()
+  ENDIF()
+
+if(DEFINED ENABLE_LOGGING_HE2PI)
+  add_definitions(-DENABLE_LOGGING_HE2PI=${ENABLE_LOGGING_HE2PI})
+endif()
 
 
 ########################################################################

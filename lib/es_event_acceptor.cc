@@ -12,6 +12,7 @@ void es_event_acceptor::schedule_event(pmt::pmt_t m){
         } else {
         // otherwise assume it is an event we are scheduling
         if(is_event(m)){
+            HE2PI_LOGGER_DEBUG("queuemon", << "time: " << ::event_time(m) << " size: " << event_queue->length() + 1 << '\n');
             event_queue->add_event(m);
         } else {
             // perform secondary check to see if it is a PDU we can work with
@@ -59,7 +60,7 @@ void es_event_acceptor::schedule_event(pmt::pmt_t m){
 
                     // add to the queue
                     event_queue->add_event(evt);
-                    
+
                 } else {
                     printf("es_event_acceptor received non event! discarding!\n");
                 }
@@ -92,4 +93,3 @@ void es_event_acceptor::add_handlers(pmt::pmt_t h){
         }
 
     }
-
